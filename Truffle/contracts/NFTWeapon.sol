@@ -11,13 +11,14 @@ contract NFTWeapon is ERC721, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    string LEVEL_1 = "QmSDQpmDqQNHB2ExYBvocEJXw4fLT6oRjGDDDaTA5huLeW";
-    string LEVEL_2 = "QmPZLRNkjYrwELfN4WSrZpZndfrJqfu6J5y1VdhjdtWq7M";
-    string LEVEL_3 = "QmcrMCZ78fd64h81AU4mAUQYjXCnTcBTLX9Q5VjN2BsokN";
-
+    mapping(uint32 => string) metadata_values;
     mapping(uint256 => uint32) nftPower;
 
-    constructor() ERC721("NFTWeapon", "WPN") {}
+    constructor() ERC721("NFTWeapon", "WPN") {
+        metadata_values[0] = "QmSDQpmDqQNHB2ExYBvocEJXw4fLT6oRjGDDDaTA5huLeW";
+        metadata_values[1] = "QmPZLRNkjYrwELfN4WSrZpZndfrJqfu6J5y1VdhjdtWq7M";
+        metadata_values[2] = "QmcrMCZ78fd64h81AU4mAUQYjXCnTcBTLX9Q5VjN2BsokN";
+    }
 
     modifier onlyGame() {
         require(msg.sender == gameAddress);
@@ -32,7 +33,7 @@ contract NFTWeapon is ERC721, Ownable {
         tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
-        nftPower[tokenId] = 1;
+        nftPower[tokenId] = 0;
     }
 
     function levelUp(uint256 _tokenId) external onlyGame {
@@ -55,18 +56,22 @@ contract NFTWeapon is ERC721, Ownable {
         gameAddress = _gameAddress;
     }
 
+    function setMetadata(uint32 level, string value) external onlyOwner {
+        metadata_values[level] = value;
+    }
+
+    function getMetadata(uint32 level) view external returns(string _result) {
+        return metadata_values[level];
+    }
+
     function tokenURI(
         uint256 _tokenId
     ) public view override returns (string memory) {
         _requireMinted(_tokenId);
-        string memory base = _baseURI();
 
-        if(nftPower[_tokenId] == 1) {
-            return string(abi.encodePacked(base, LEVEL_1));
-        } else if(nftPower[_tokenId] == 2) {
-            return string(abi.encodePacked(base, LEVEL_2));
-        } else {
-            return string(abi.encodePacked(base, LEVEL_3));
-        }
+        string memory base = _baseURI();
+        uint32 nftLevel = nftPower[_tokenId];
+
+        return string(abi.encodePacked(base,  metadata_values[nftLevel]));
     }
 }
