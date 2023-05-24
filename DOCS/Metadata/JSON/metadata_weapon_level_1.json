@@ -1,0 +1,12 @@
+{
+    "description": "It's a simple Weapon Example.",
+    "external_url": "http://weapon_example.com",
+    "image": "https://chainlinkbootcamp.infura-ipfs.io/ipfs/QmaFjjXiiwKfeCRt4cvULRBSQXiH6GXU27kZbYWRKatBRN",
+    "name": "Weapon Example",
+    "attributes": [
+        {
+            "trait_type": "Level",
+            "value": "1"
+        }
+    ]
+}
