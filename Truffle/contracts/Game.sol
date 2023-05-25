@@ -7,11 +7,18 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/IERC721Weapon.sol";
 import "./VRFV2Consumer.sol";
 
-contract Game is ReentrancyGuard, VRFV2Consumer {
+contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
     IERC721Weapon gameAddress;
-    mapping (uint256 => uint256) upgrades;
+
+    struct Upgrades {
+        uint256 tokenId;
+        uint8 luckValue;
+        bool upgrade;
+        address sender;
+    }
+
+    mapping (uint256 => Upgrades) upgrades;
     uint8 difficulty = 6;
-    uint8 luckValue = 1;
 
     constructor(
         address _nftWeaponAddress,
@@ -22,13 +29,15 @@ contract Game is ReentrancyGuard, VRFV2Consumer {
         gameAddress = IERC721Weapon(_nftWeaponAddress);
     }
 
-    function forgeUpgradeWeapon(bool _isUpgrade, uint256 _tokenId) external {
-        if(!_isUpgrade) {
-            _tokenId = gameAddress.safeMint(msg.sender);
+    function forgeUpgradeWeapon(bool _isUpgrade, uint256 _tokenId, uint8 _luckValue) external {
+        if(_isUpgrade) {
+            require(gameAddress.ownerOf(_tokenId) == msg.sender);
         }
-        require(gameAddress.ownerOf(_tokenId) == msg.sender);
+
         uint256 chainlinkRequest = requestRandomWords(1);
-        upgrades[chainlinkRequest] = _tokenId;
+        upgrades[chainlinkRequest].tokenId = _tokenId;
+        upgrades[chainlinkRequest].luckValue = _luckValue;
+        upgrades[chainlinkRequest].upgrade = _isUpgrade;        
     }
 
     function fulfillRandomWords(
@@ -37,8 +46,20 @@ contract Game is ReentrancyGuard, VRFV2Consumer {
     ) internal override {
         super.fulfillRandomWords(_requestId, _randomWords);
         
-        if((_randomWords[0] % difficulty) == luckValue) {
-            gameAddress.levelUp(upgrades[_requestId]);
+        if((_randomWords[0] % difficulty) == upgrades[_requestId].luckValue) {
+            if(upgrades[_requestId].upgrade) {
+                gameAddress.levelUp(upgrades[_requestId].tokenId);
+            } else {
+                 gameAddress.safeMint(upgrades[_requestId].sender);
+            }
+        } else {
+            if(upgrades[_requestId].upgrade) {
+                gameAddress.burn(upgrades[_requestId].tokenId);
+            }
         }
+    }
+
+    function setDifficulty(uint8 newValue) external onlyOwner {
+        difficulty = newValue;
     }
 }

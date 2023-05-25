@@ -56,11 +56,11 @@ contract NFTWeapon is ERC721, Ownable {
         gameAddress = _gameAddress;
     }
 
-    function setMetadata(uint32 level, string value) external onlyOwner {
+    function setMetadata(uint32 level, string memory value) external onlyOwner {
         metadata_values[level] = value;
     }
 
-    function getMetadata(uint32 level) view external returns(string _result) {
+    function getMetadata(uint32 level) view external returns(string memory _result) {
         return metadata_values[level];
     }
 
