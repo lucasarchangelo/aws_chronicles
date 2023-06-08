@@ -10,7 +10,7 @@
     "test": "truffle test",
     "start_local": "ganache -i 666 -m \"teach core boat want author animal neglect social bone page modify mass\"",
     "vmumbai": "truffle run verify Game NFTWeapon --network mumbai",
-    "vmatic": "truffle run verify Lottery --network matic",
+    "vmatic": "truffle run verify Game NFTWeapon --network matic",
     "mmumbai": "truffle migrate --network mumbai",
     "mmumbai_nft": "truffle migrate --network mumbai --f 1 --to 1",
     "mmatic": "truffle migrate --network matic",

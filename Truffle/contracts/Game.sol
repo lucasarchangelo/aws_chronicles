@@ -87,13 +87,15 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
         uint256[] memory _randomWords
     ) internal override {
         super.fulfillRandomWords(_requestId, _randomWords);
-        if ((_randomWords[0] % difficulty) == upgrades[_requestId].luckValue) {
+        uint8 result = uint8(_randomWords[0] % difficulty);
+        if (result == upgrades[_requestId].luckValue) {
             gameAddress.levelUp(upgrades[_requestId].tokenId);
             emit UpgradeSuccess(
                 upgrades[_requestId].sender,
                 upgrades[_requestId].luckValue,
                 upgrades[_requestId].tokenId,
-                _randomWords[0] % difficulty
+                _requestId,
+                result
             );
         } else {
             gameAddress.burn(upgrades[_requestId].tokenId);
@@ -101,7 +103,8 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
                 upgrades[_requestId].sender,
                 upgrades[_requestId].luckValue,
                 upgrades[_requestId].tokenId,
-                _randomWords[0] % difficulty
+                _requestId,
+                result
             );
         }
     }
