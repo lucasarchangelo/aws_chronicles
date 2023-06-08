@@ -1,7 +1,5 @@
-Sword lvl 1 - QmaFjjXiiwKfeCRt4cvULRBSQXiH6GXU27kZbYWRKatBRN
-Sword lvl 2 - QmZykewVPa3AL1o6bLsRM95hk8VEGELL2fSMeUCf2NYqLc
-Sword lvl 3 - QmX9nNppLdoF8wbwLBzmYRSq5W9FNRwkjiiWvYzwXWeSR5
+metadata_shurikens_level_1.json = QmV5opZrow3Cu3AEXk3t2w59Mn876Xh4Y588dfwqE3j2eR
+metadata_shurikens_level_2.json = QmWSYo2xK14QgiuDxeJ6o3W8MmxK1RgWBfW1AEbgyatYTW
+metadata_shurikens_level_3.json = QmaGeZhemcMqA2nQNq2Baqge8oWXvht2Nma7ShnrXA7fJt
+metadata_shurikens_level_4.json = QmYC3xrMpv1hqGyXHJEgEkMt5sBoSDwWEQeqJxMPQcrCo2
 
-metadata lvl 1 - QmSDQpmDqQNHB2ExYBvocEJXw4fLT6oRjGDDDaTA5huLeW
-metadata lvl 2 - QmPZLRNkjYrwELfN4WSrZpZndfrJqfu6J5y1VdhjdtWq7M
-metadata lvl 3 - QmcrMCZ78fd64h81AU4mAUQYjXCnTcBTLX9Q5VjN2BsokN

@@ -15,9 +15,10 @@ contract NFTWeapon is ERC721, Ownable {
     mapping(uint256 => uint32) nftPower;
 
     constructor() ERC721("NFTWeapon", "WPN") {
-        metadata_values[0] = "QmSDQpmDqQNHB2ExYBvocEJXw4fLT6oRjGDDDaTA5huLeW";
-        metadata_values[1] = "QmPZLRNkjYrwELfN4WSrZpZndfrJqfu6J5y1VdhjdtWq7M";
-        metadata_values[2] = "QmcrMCZ78fd64h81AU4mAUQYjXCnTcBTLX9Q5VjN2BsokN";
+        metadata_values[0] = "QmV5opZrow3Cu3AEXk3t2w59Mn876Xh4Y588dfwqE3j2eR";
+        metadata_values[1] = "QmWSYo2xK14QgiuDxeJ6o3W8MmxK1RgWBfW1AEbgyatYTW";
+        metadata_values[2] = "QmaGeZhemcMqA2nQNq2Baqge8oWXvht2Nma7ShnrXA7fJt";
+        metadata_values[3] = "QmYC3xrMpv1hqGyXHJEgEkMt5sBoSDwWEQeqJxMPQcrCo2";
     }
 
     modifier onlyGame() {

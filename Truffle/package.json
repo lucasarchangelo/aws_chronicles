@@ -12,7 +12,9 @@
     "vmumbai": "truffle run verify Game NFTWeapon --network mumbai",
     "vmatic": "truffle run verify Lottery --network matic",
     "mmumbai": "truffle migrate --network mumbai",
-    "mmatic": "truffle migrate --network matic"
+    "mmumbai_nft": "truffle migrate --network mumbai --f 1 --to 1",
+    "mmatic": "truffle migrate --network matic",
+    "upgrade_test": "truffle exec ./scripts/test_upgrade_weapon.js --network mumbai"
   },
   "keywords": [],
   "author": "",

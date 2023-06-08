@@ -122,8 +122,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -136,8 +135,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -150,8 +148,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -195,8 +192,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -220,8 +216,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -304,16 +299,14 @@
       "name": "forgeUpgradeWeapon",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     },
     {
       "inputs": [],
       "name": "buyWeapon",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -11219,7 +11212,7 @@
         1363
       ],
       "IERC721Weapon": [
-        3593
+        3599
       ],
       "Ownable": [
         266
@@ -11234,7 +11227,7 @@
         153
       ],
       "VRFV2Consumer": [
-        3563
+        3569
       ]
     },
     "id": 3081,
@@ -11283,7 +11276,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3081,
-        "sourceUnit": 3594,
+        "sourceUnit": 3600,
         "src": "180:40:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11295,7 +11288,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 3081,
-        "sourceUnit": 3564,
+        "sourceUnit": 3570,
         "src": "222:29:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11341,7 +11334,7 @@
                 "298:13:15"
               ],
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3563,
+              "referencedDeclaration": 3569,
               "src": "298:13:15"
             },
             "id": 2922,
@@ -11356,7 +11349,7 @@
         "id": 3080,
         "linearizedBaseContracts": [
           3080,
-          3563,
+          3569,
           320,
           266,
           1760,
@@ -11378,7 +11371,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+              "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
               "typeString": "contract IERC721Weapon"
             },
             "typeName": {
@@ -11391,13 +11384,13 @@
                   "319:13:15"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 3593,
+                "referencedDeclaration": 3599,
                 "src": "319:13:15"
               },
-              "referencedDeclaration": 3593,
+              "referencedDeclaration": 3599,
               "src": "319:13:15",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                 "typeString": "contract IERC721Weapon"
               }
             },
@@ -11617,7 +11610,7 @@
                       "referencedDeclaration": 2925,
                       "src": "759:11:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                        "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                         "typeString": "contract IERC721Weapon"
                       }
                     },
@@ -11649,10 +11642,10 @@
                         "name": "IERC721Weapon",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3593,
+                        "referencedDeclaration": 3599,
                         "src": "773:13:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IERC721Weapon_$3593_$",
+                          "typeIdentifier": "t_type$_t_contract$_IERC721Weapon_$3599_$",
                           "typeString": "type(contract IERC721Weapon)"
                         }
                       },
@@ -11668,13 +11661,13 @@
                       "src": "773:32:15",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                        "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                         "typeString": "contract IERC721Weapon"
                       }
                     },
                     "src": "759:46:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                      "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                       "typeString": "contract IERC721Weapon"
                     }
                   },
@@ -11736,7 +11729,7 @@
                     "687:13:15"
                   ],
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 3563,
+                  "referencedDeclaration": 3569,
                   "src": "687:13:15"
                 },
                 "nodeType": "ModifierInvocation",
@@ -11924,7 +11917,7 @@
                               "referencedDeclaration": 2925,
                               "src": "921:11:15",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                                "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                                 "typeString": "contract IERC721Weapon"
                               }
                             },
@@ -12187,7 +12180,7 @@
                       "name": "requestRandomWords",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 3445,
+                      "referencedDeclaration": 3451,
                       "src": "1048:18:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$returns$_t_uint256_$",
@@ -12516,7 +12509,7 @@
                         "referencedDeclaration": 2925,
                         "src": "1250:11:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                          "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                           "typeString": "contract IERC721Weapon"
                         }
                       },
@@ -12528,7 +12521,7 @@
                       "memberLocation": "1262:8:15",
                       "memberName": "safeMint",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3575,
+                      "referencedDeclaration": 3581,
                       "src": "1250:20:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_uint256_$",
@@ -12585,7 +12578,7 @@
           },
           {
             "baseFunctions": [
-              3482
+              3488
             ],
             "body": {
               "id": 3066,
@@ -12651,7 +12644,7 @@
                       "memberLocation": "1437:18:15",
                       "memberName": "fulfillRandomWords",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3482,
+                      "referencedDeclaration": 3488,
                       "src": "1431:24:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_array$_t_uint256_$dyn_memory_ptr_$returns$__$",
@@ -12914,7 +12907,7 @@
                               "referencedDeclaration": 2925,
                               "src": "1659:11:15",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                                "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                                 "typeString": "contract IERC721Weapon"
                               }
                             },
@@ -12926,7 +12919,7 @@
                             "memberLocation": "1671:4:15",
                             "memberName": "burn",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3580,
+                            "referencedDeclaration": 3586,
                             "src": "1659:16:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -13035,7 +13028,7 @@
                               "referencedDeclaration": 2925,
                               "src": "1577:11:15",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IERC721Weapon_$3593",
+                                "typeIdentifier": "t_contract$_IERC721Weapon_$3599",
                                 "typeString": "contract IERC721Weapon"
                               }
                             },
@@ -13047,7 +13040,7 @@
                             "memberLocation": "1589:7:15",
                             "memberName": "levelUp",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 3585,
+                            "referencedDeclaration": 3591,
                             "src": "1577:19:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -13372,13 +13365,12 @@
         }
       },
       "links": {},
-      "address": "0xeDdA3CaeB53A2314679DDeBf6043850c846A8e5A",
-      "transactionHash": "0x2480cc14257316ec8113d122a32a7b3cbaedc4572517da076254c7a51a57b6cc"
+      "address": "0x221743C05ec4Fab2fE060c679Dfa0011d55B49a3",
+      "transactionHash": "0x11de0cb4554685d541a2995b819e41af9ce785ff1fd49467161c03bee81b7d68"
     }
   },
-  "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-07T00:50:29.911Z",
-  "networkType": "ethereum",
+  "schemaVersion": "3.4.14",
+  "updatedAt": "2023-06-08T17:54:11.168Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

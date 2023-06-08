@@ -2,7 +2,7 @@
     "description": "Shiruken",
     "external_url": "http://weapon_example.com",
     "image": "https://chainlinkbootcamp.infura-ipfs.io/ipfs/QmPE6mZhaudcZVy6PNav2AfMBdqA84pjnAW2gZ23ijdGmf",
-    "name": "Shuriken LVL #2",
+    "name": "Shuriken LVL #4",
     "attributes": [
         {
             "trait_type": "Type",
@@ -10,7 +10,7 @@
         },
         {
             "trait_type": "Level",
-            "value": "2"
+            "value": "4"
         }
     ]
 }
