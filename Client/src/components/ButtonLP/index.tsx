@@ -1,17 +1,18 @@
+import Link from "next/link";
 import { ReactNode } from "react";
 
-export const Button = ({
+export const ButtonLP = ({
   onClick,
   color = "primary",
   children,
 }: {
-  onClick?: () => void;
+  onClick?: string;
   color?: "primary" | "white";
   children: ReactNode;
 }) => (
+  <Link href={onClick!}>
   <svg
-    onClick={onClick}
-    width={270}
+    width={220}
     height={60}
     viewBox="0 0 303 80"
     fill="none"
@@ -32,9 +33,10 @@ export const Button = ({
       y={40}
       textAnchor="middle"
       dominantBaseline="middle"
-      className={`fill-current text-xl text-black font-semibold`}
+      className={`fill-current text-3xl text-black`}
     >
       {children}
     </text>
   </svg>
+  </Link>
 );

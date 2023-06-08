@@ -2,7 +2,11 @@ import { Header } from "@/components/Header";
 import "./globals.css";
 import { Gugi } from "next/font/google";
 
-const gugi = Gugi({ weight: "400", subsets: ["latin"] });
+const gugi = Gugi({
+  weight: "400",
+  subsets: ["latin"],
+  variable: '--font-gugi'
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={gugi.className}>{children}</body>
+      <body className={`${gugi.variable} font-sans`}>{children}</body>
     </html>
   );
 }
