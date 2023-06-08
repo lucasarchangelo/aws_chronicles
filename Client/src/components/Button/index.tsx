@@ -1,13 +1,16 @@
 import { ReactNode } from "react";
 
 export const Button = ({
+  onClick,
   color = "primary",
   children,
 }: {
+  onClick?: () => void;
   color?: "primary" | "white";
   children: ReactNode;
 }) => (
   <svg
+    onClick={onClick}
     width={270}
     height={60}
     viewBox="0 0 303 80"

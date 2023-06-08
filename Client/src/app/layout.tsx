@@ -16,10 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={gugi.className}>
-        <Header />
-        {children}
-      </body>
+      <body className={gugi.className}>{children}</body>
     </html>
   );
 }
