@@ -1,0 +1,19 @@
+import { ReactNode } from "react";
+
+export const Header = () => {
+  return (
+    <header className="w-full flex">
+      <div className="p-5 w-1/2">
+        <h1 className="font-medium text-3xl">Arcane Warriors Saga</h1>
+        <p className="font-thin"> T h e A W S C h r o n i c l e s</p>
+      </div>
+      <div className="w-1/2 flex items-center justify-center bg-[#99C7F4] text-neutral-800">
+        <ul className="flex w-full font-thin items-center justify-evenly">
+          <li>Home</li>
+          <li>Disconnect</li>
+          <li>0x4323432534</li>
+        </ul>
+      </div>
+    </header>
+  );
+};
