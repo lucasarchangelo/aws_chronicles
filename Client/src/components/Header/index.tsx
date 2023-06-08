@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
 export const Header = () => {
   return (
-    <header className="w-full flex">
+    <header className="w-full h-[80px] flex bg-gradient-to-b from-black from-90% to-transparent">
       <div className="p-5 w-1/2">
         <h1 className="font-medium text-3xl">Arcane Warriors Saga</h1>
         <p className="font-thin"> T h e A W S C h r o n i c l e s</p>

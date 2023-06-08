@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-const Button = ({
+export const Button = ({
   color = "primary",
   children,
 }: {
@@ -25,12 +25,11 @@ const Button = ({
         `}
     />
     <text
-      x={30}
+      x={150}
       y={40}
-      className={`fill-current ${
-        color === "primary" ? "text-white" : "text-[#99C7F4]"
-      } 
-        `}
+      textAnchor="middle"
+      dominantBaseline="middle"
+      className={`fill-current text-xl text-black font-semibold`}
     >
       {children}
     </text>
