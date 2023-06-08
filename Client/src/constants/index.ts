@@ -1,0 +1,1 @@
+export const rightChainId: BigInt = BigInt(80001);
