@@ -3,6 +3,7 @@ import { Button } from "@/components/Button";
 import { useContract } from "@/contexts/ContractContext";
 import { useEthersStore } from "@/store/ethersStore";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const fakeData = [
   {
@@ -34,7 +35,18 @@ export const BoxElements = () => {
   };
 
   return (
-    <div className="flex w-full justify-center items-center relative">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.1 }}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 20,
+        duration: 0.5,
+      }}
+      className="flex w-full justify-center items-center relative"
+    >
       <Blur />
       <div className="flex rounded-2xl gap-4 bg-neutral-950 p-10 items-center w-2/4 justify-center flex-col">
         <div
@@ -53,7 +65,7 @@ export const BoxElements = () => {
               }
               className={`${
                 selectedPower == item.id && "scale-110"
-              } flex flex-col cursor-pointer items-center justify-center hover:scale-105 transition-all duration-300 ease-in-out`}
+              } flex flex-col cursor-pointer items-center justify-center hover:scale-105 transition-all ease-in-out`}
             >
               <Image
                 alt="element"
@@ -67,6 +79,6 @@ export const BoxElements = () => {
         </div>
         <Button onClick={handleUpgrade}>Confirm Transition</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
