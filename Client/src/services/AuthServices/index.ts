@@ -1,14 +1,18 @@
 import { rightChainId } from "@/constants";
-import ethers from "ethers";
+import { ethers } from "ethers";
 import { changeNetwork } from "@/functions/changeNetwork";
 
 export const AuthServices = {
   connect: async (provider: ethers.BrowserProvider) => {
-    debugger;
-    const network = await provider.getNetwork();
+    console.log("Parou antes do provider.getNetwork")
+    // debugger;
+    const provider1 = new ethers.BrowserProvider(window.ethereum)
+
+    const network = await provider1.getNetwork();
 
     if (network.chainId === rightChainId) {
-      const [wallet] = await provider.send("eth_requestAccounts", []);
+    console.log("ChainID está certo, conectou!")
+      const [wallet] = await provider1.send("eth_requestAccounts", []);
       return wallet;
     }
 

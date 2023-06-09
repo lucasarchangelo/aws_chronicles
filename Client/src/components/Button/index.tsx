@@ -5,7 +5,7 @@ export const Button = ({
   color = "primary",
   children,
 }: {
-  onClick?: () => void;
+  onClick?: (params: any) => void;
   color?: "primary" | "white";
   children: ReactNode;
 }) => (
