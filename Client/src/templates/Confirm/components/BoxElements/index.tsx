@@ -2,6 +2,25 @@ import { Blur } from "@/components/Blur";
 import { Button } from "@/components/Button";
 import Image from "next/image";
 
+const fakeData = [
+  {
+    id: 0,
+    image: "/static-power.png",
+  },
+  {
+    id: 1,
+    image: "/static-power.png",
+  },
+  {
+    id: 2,
+    image: "/static-power.png",
+  },
+  {
+    id: 3,
+    image: "/static-power.png",
+  },
+];
+
 export const BoxElements = () => {
   return (
     <div className="flex w-full justify-center items-center relative">
@@ -15,42 +34,20 @@ export const BoxElements = () => {
                   z-2
               "
         >
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power.png"
-              width={80}
-              height={80}
-            />
-          </div>
+          {fakeData.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col items-center justify-center"
+            >
+              <Image
+                alt="element"
+                className="z-10"
+                src={item.image}
+                width={100}
+                height={100}
+              />
+            </div>
+          ))}
         </div>
         <Button>Confirm Transition</Button>
       </div>
