@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/Button";
 import { Layout } from "../Layout";
 import { BoxElements } from "./components/BoxElements";

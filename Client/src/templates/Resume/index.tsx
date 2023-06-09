@@ -1,3 +1,5 @@
+"use client";
+
 import { Layout } from "@/templates/Layout";
 import { Button } from "@/components/Button";
 import { LastUpgrades } from "./components/LastUpgrades";

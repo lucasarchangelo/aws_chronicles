@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Layout } from "../Layout";
 import { Button } from "@/components/Button";
