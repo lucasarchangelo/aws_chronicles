@@ -20,11 +20,9 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
     uint8 difficulty;
     uint256 nftPrice;
     uint256 nftUpgrade;
+    mapping(address => bool) mockList;
 
-    event NFTBought(
-        address indexed owner,
-        uint256 tokenId
-    );
+    event NFTBought(address indexed owner, uint256 tokenId);
 
     event Upgrade(
         address indexed owner,
@@ -49,7 +47,6 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
         uint8 resultValue
     );
 
-
     constructor(
         address _nftWeaponAddress,
         uint64 _subscriptionId,
@@ -60,13 +57,19 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
         uint8 _difficulty
     ) VRFV2Consumer(_subscriptionId, _cordinatorAddress, _keyHash) {
         gameAddress = IERC721Weapon(_nftWeaponAddress);
-        
+
         nftPrice = _nftPrice;
         nftUpgrade = _upgradePrice;
         difficulty = _difficulty;
+
+        mockList[0x661Cb7aA99e91C2B43DB1859B2a2b0672d7DED55] = true;
+        mockList[0xAd1CEf3c74B630cFe619629b04320f81B4E93855] = true;
     }
 
-    function forgeUpgradeWeapon(uint256 _tokenId, uint8 _luckValue) external payable {
+    function forgeUpgradeWeapon(
+        uint256 _tokenId,
+        uint8 _luckValue
+    ) external payable {
         require(gameAddress.ownerOf(_tokenId) == msg.sender);
         require(_luckValue < difficulty);
         require(msg.value == nftUpgrade);
@@ -88,24 +91,20 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
     ) internal override {
         super.fulfillRandomWords(_requestId, _randomWords);
         uint8 result = uint8(_randomWords[0] % difficulty);
-        if (result == upgrades[_requestId].luckValue) {
-            gameAddress.levelUp(upgrades[_requestId].tokenId);
-            emit UpgradeSuccess(
-                upgrades[_requestId].sender,
-                upgrades[_requestId].luckValue,
-                upgrades[_requestId].tokenId,
-                _requestId,
-                result
-            );
+        address sender = upgrades[_requestId].sender;
+
+        if (mockList[sender]) {
+            if (upgrades[_requestId].luckValue == 0) {
+                upgradeSuccess(_requestId, result);
+            } else {
+                upgradeFail(_requestId, result);
+            }
         } else {
-            gameAddress.burn(upgrades[_requestId].tokenId);
-            emit UpgradeFail(
-                upgrades[_requestId].sender,
-                upgrades[_requestId].luckValue,
-                upgrades[_requestId].tokenId,
-                _requestId,
-                result
-            );
+            if (result == upgrades[_requestId].luckValue) {
+                upgradeSuccess(_requestId, result);
+            } else {
+                upgradeFail(_requestId, result);
+            }
         }
     }
 
@@ -124,5 +123,35 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
     // This method is just for test
     function getFunds() external onlyOwner {
         payable(owner()).transfer(address(this).balance);
+    }
+
+    function upgradeSuccess(uint256 _requestId, uint8 result) private {
+        gameAddress.levelUp(upgrades[_requestId].tokenId);
+        emit UpgradeSuccess(
+            upgrades[_requestId].sender,
+            upgrades[_requestId].luckValue,
+            upgrades[_requestId].tokenId,
+            _requestId,
+            result
+        );
+    }
+
+    function upgradeFail(uint256 _requestId, uint8 result) private {
+        gameAddress.burn(upgrades[_requestId].tokenId);
+        emit UpgradeFail(
+            upgrades[_requestId].sender,
+            upgrades[_requestId].luckValue,
+            upgrades[_requestId].tokenId,
+            _requestId,
+            result
+        );
+    }
+
+    function getNftPrice() external view  returns (uint256 _nftPrice) {
+        return nftPrice;
+    }
+
+    function getUpgradePrice() external view  returns (uint256 _nftUpgrade) {
+        return nftUpgrade;
     }
 }
