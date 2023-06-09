@@ -1,8 +1,8 @@
 "use client";
-import { Button } from "@/components/Button";
 import { Layout } from "../Layout";
 import { BoxElements } from "./components/BoxElements";
 import { useContract } from "@/contexts/ContractContext";
+import ActionButtons from "@/components/ActionButtons";
 
 export const Confirm = () => {
   //importar funcoes do contrato
@@ -10,12 +10,7 @@ export const Confirm = () => {
   return (
     <Layout
       actions={
-        <>
-          <Button>Forge Weapons</Button>
-          <Button>Upgrade Weapons</Button>
-          <Button color="white">Leaderboard</Button>
-          <Button color="white">Last Upgrades</Button>
-        </>
+        <ActionButtons/>
       }
       leftSlot={<BoxElements />}
     />

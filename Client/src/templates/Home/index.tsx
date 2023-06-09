@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import { Layout } from "../Layout";
-import { Button } from "@/components/Button";
 import { Weapons } from "./components/Weapons";
 import { Blur } from "@/components/Blur";
 import { useContract } from "@/contexts/ContractContext";
+import ActionButtons from "@/components/ActionButtons";
 
 export const Home = () => {
   //importar funcoes do contrato
@@ -13,12 +13,7 @@ export const Home = () => {
   return (
     <Layout
       actions={
-        <>
-          <Button>Forge Weapons</Button>
-          <Button>Upgrade Weapons</Button>
-          <Button color="white">Leaderboard</Button>
-          <Button color="white">Last Upgrades</Button>
-        </>
+        <ActionButtons/>
       }
       footer={<Weapons></Weapons>}
       leftSlot={
