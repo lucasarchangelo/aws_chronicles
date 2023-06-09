@@ -34,6 +34,7 @@ export const BoxElements = () => {
                   z-2
               "
         >
+<<<<<<< HEAD
           {fakeData.map((item) => (
             <div
               key={item.id}
@@ -48,6 +49,44 @@ export const BoxElements = () => {
               />
             </div>
           ))}
+=======
+          <div className="flex items-center justify-center">
+            <Image
+              className="w-4/5"
+              alt="power"
+              src="/static-power-1.png"
+              width={80}
+              height={80}
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              className="w-4/5"
+              alt="power"
+              src="/static-power-2.png"
+              width={80}
+              height={80}
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              className="w-4/5"
+              alt="power"
+              src="/static-power-3.png"
+              width={80}
+              height={80}
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              className="w-4/5"
+              alt="power"
+              src="/static-power-4.png"
+              width={80}
+              height={80}
+            />
+          </div>
+>>>>>>> 117e7ec053fcca1ac2f94d661ce59216fe30ef35
         </div>
         <Button>Confirm Transition</Button>
       </div>
