@@ -23,10 +23,9 @@ export const Header = () => {
           </li>
           {currentWallet && (
             <>
-              <li className="font-bold">{`${currentWallet.substring(
-                0,
-                9
-              )}...`}</li>
+              <li className="font-bold">
+                {`0x${currentWallet[2]}${currentWallet[3]}${currentWallet[4]}...${currentWallet.slice(-4)}`}
+              </li>
             </>
           )}
           <li
