@@ -12,8 +12,15 @@ export default function GameLayout({
 }) {
   return (
     <>
-      <Header />
-      {children}
+      <div className="relative z-0 px-16 py-20 bg-[#1E1E1E]">
+        <div className="absolute left-0 top-0 h-[526px] w-[526px] -translate-y-1/2 -translate-x-1/2 rounded-full bg-blue-400 blur-full" />
+        <div className="absolute right-0 top-1/2 h-[526px] w-[526px] -translate-y-1/2 rounded-full bg-purple-500 blur-full" />
+        <div className="absolute right-1/2 bottom-0 h-[526px] w-[526px] translate-x-1/2 rounded-full bg-blue-300 blur-full" />
+        <div className="relative z-10 bg-black min-h-screen min-w-full flex flex-col">
+          <Header />
+          {children}
+        </div>
+      </div>
     </>
   );
 }
