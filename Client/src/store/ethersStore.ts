@@ -16,6 +16,8 @@ type EthersStore = {
   error: string | null;
   gameContrat: any;
   nftContract: any;
+  selectedWeapon: number;
+  selectedPower: number;
   connectWallet: () => Promise<any>;
   disconnectWallet: () => void;
 };
@@ -29,6 +31,8 @@ export const useEthersStore = create<EthersStore>()(
     error: null,
     gameContrat: null,
     nftContract: null,
+    selectedWeapon: 0,
+    selectedPower: 0,
     connectWallet: async () => {
       try {
         const wallet = await AuthServices.connect(get().provider!);

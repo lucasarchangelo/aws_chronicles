@@ -19,12 +19,14 @@ export const Header = () => {
       <div className="w-1/2 flex items-center justify-center bg-[#99C7F4] text-neutral-800">
         <ul className="flex w-full font-thin items-center justify-evenly">
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/dapp">Home</Link>
           </li>
           {currentWallet && (
             <>
               <li className="font-bold">
-                {`0x${currentWallet[2]}${currentWallet[3]}${currentWallet[4]}...${currentWallet.slice(-4)}`}
+                {`0x${currentWallet[2]}${currentWallet[3]}${
+                  currentWallet[4]
+                }...${currentWallet.slice(-4)}`}
               </li>
             </>
           )}

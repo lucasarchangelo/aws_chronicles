@@ -1,27 +1,38 @@
 import { Blur } from "@/components/Blur";
 import { Button } from "@/components/Button";
+import { useContract } from "@/contexts/ContractContext";
+import { useEthersStore } from "@/store/ethersStore";
 import Image from "next/image";
 
 const fakeData = [
   {
     id: 0,
-    image: "/static-power.png",
+    image: "/static-power-1.png",
   },
   {
     id: 1,
-    image: "/static-power.png",
+    image: "/static-power-2.png",
   },
   {
     id: 2,
-    image: "/static-power.png",
+    image: "/static-power-3.png",
   },
   {
     id: 3,
-    image: "/static-power.png",
+    image: "/static-power-4.png",
   },
 ];
 
 export const BoxElements = () => {
+  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
+  const selectedPower = useEthersStore((state) => state.selectedPower);
+  const { upgradeWeapon } = useContract();
+
+  const handleUpgrade = async () => {
+    console.log({ selectedWeapon, selectedPower });
+    await upgradeWeapon(selectedWeapon, selectedPower);
+  };
+
   return (
     <div className="flex w-full justify-center items-center relative">
       <Blur />
@@ -34,11 +45,15 @@ export const BoxElements = () => {
                   z-2
               "
         >
-<<<<<<< HEAD
-          {fakeData.map((item) => (
+          {fakeData?.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col items-center justify-center"
+              onClick={() =>
+                useEthersStore.setState({ selectedPower: item.id })
+              }
+              className={`${
+                selectedPower == item.id && "scale-110"
+              } flex flex-col cursor-pointer items-center justify-center hover:scale-105 transition-all duration-300 ease-in-out`}
             >
               <Image
                 alt="element"
@@ -49,46 +64,8 @@ export const BoxElements = () => {
               />
             </div>
           ))}
-=======
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power-1.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power-2.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power-3.png"
-              width={80}
-              height={80}
-            />
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              className="w-4/5"
-              alt="power"
-              src="/static-power-4.png"
-              width={80}
-              height={80}
-            />
-          </div>
->>>>>>> 117e7ec053fcca1ac2f94d661ce59216fe30ef35
         </div>
-        <Button>Confirm Transition</Button>
+        <Button onClick={handleUpgrade}>Confirm Transition</Button>
       </div>
     </div>
   );

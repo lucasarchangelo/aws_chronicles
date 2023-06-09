@@ -43,12 +43,17 @@ const ContractProvider = ({ children }: { children: any }) => {
     if (!gameContractInstance || !signer || !provider) return;
     try {
       const upgradePrice = await gameContractInstance.getUpgradePrice();
-      const tx = await gameContractInstance.upgradeWeapon(tokenId, luckValue, {
-        value: upgradePrice,
-      });
-      console.log(tx);
+      console.log({ upgradePrice });
+      const tx = await gameContractInstance.forgeUpgradeWeapon(
+        tokenId,
+        luckValue,
+        {
+          value: upgradePrice,
+        }
+      );
+      console.log({ tx });
       const receipt = await tx.wait();
-      console.log(receipt);
+      console.log({ receipt });
       return receipt;
     } catch (error) {
       console.log(error);
