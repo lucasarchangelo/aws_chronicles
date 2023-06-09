@@ -8,13 +8,10 @@ import ActionButtons from "@/components/ActionButtons";
 
 export const Home = () => {
   //importar funcoes do contrato
-  const {} = useContract();
 
   return (
     <Layout
-      actions={
-        <ActionButtons/>
-      }
+      actions={<ActionButtons />}
       footer={<Weapons></Weapons>}
       leftSlot={
         <div className="flex w-full justify-center items-center relative">

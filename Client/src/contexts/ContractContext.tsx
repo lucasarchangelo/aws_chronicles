@@ -2,8 +2,9 @@
 
 import { useEthersStore } from "@/store/ethersStore";
 import { ethers } from "ethers";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useEthers } from "@/hooks/useEthers";
+import Game from "../../contracts/Game.json";
 
 const ContractContext = createContext({} as any);
 
@@ -13,24 +14,53 @@ const ContractProvider = ({ children }: { children: any }) => {
   const chainId = useEthersStore((state) => state.chainId);
   const currentWallet = useEthersStore((state) => state.currentWallet);
   const { provider, signer } = useEthers();
-  const gameContractAdress = useEthersStore((state) => state.gameContrat);
+  const gameContractAddress = useEthersStore((state) => state.gameContrat);
   const [gameContractInstance, setGameContractInstance] = useState<any>();
 
   useEffect(() => {
     if (!provider || !currentWallet || !signer) return;
-    //todo: create contract instance
-    // const Contract = new ethers.Contract(
-
-    // );
-    // setContractInstance(Contract);
+    const Contract = new ethers.Contract(gameContractAddress, Game.abi, signer);
+    setGameContractInstance(Contract);
   }, [chainId, provider, signer]);
 
-  // criar funcoes para interagir com o contrato
+  const buyWeapon = async () => {
+    if (!gameContractInstance || !signer || !provider) return;
+    try {
+      const price = await gameContractInstance.getNftPrice();
+      const tx = await gameContractInstance.buyWeapon({
+        value: price,
+      });
+      console.log(tx);
+      const receipt = await tx.wait();
+      console.log(receipt);
+      return receipt;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const upgradeWeapon = async () => {
+    if (!gameContractInstance || !signer || !provider) return;
+    try {
+      const price = await gameContractInstance.getUpgradePrice();
+      const tx = await gameContractInstance.upgradeWeapon({
+        value: price,
+      });
+      console.log(tx);
+      const receipt = await tx.wait();
+      console.log(receipt);
+      return receipt;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <ContractContext.Provider
       value={{
         gameContractInstance,
+        buyWeapon,
+        upgradeWeapon,
       }}
     >
       {children}
