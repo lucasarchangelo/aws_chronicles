@@ -1,11 +1,11 @@
 import { Header } from "@/components/Header";
 import "./globals.css";
 import { Gugi } from "next/font/google";
+import ContractProvider from "@/contexts/ContractContext";
 
 const gugi = Gugi({
   weight: "400",
   subsets: ["latin"],
-  variable: '--font-gugi'
 });
 
 export const metadata = {
@@ -20,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${gugi.variable} font-sans`}>{children}</body>
+      <ContractProvider>
+        <body style={gugi.style}>{children}</body>
+      </ContractProvider>
     </html>
   );
 }

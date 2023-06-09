@@ -1,9 +1,12 @@
-'use client'
+"use client";
+import Link from "next/link";
 import { Button } from "../Button";
 import { useEthersStore } from "@/store/ethersStore";
 
 export const Header = () => {
-  const currentWallet = useEthersStore((state) => state.currentWallet);
+  const currentWallet = useEthersStore(
+    (state) => state.currentWallet
+  ) as string;
   const connectWallet = useEthersStore((state) => state.connectWallet);
   const disconnectWallet = useEthersStore((state) => state.disconnectWallet);
 
@@ -15,18 +18,22 @@ export const Header = () => {
       </div>
       <div className="w-1/2 flex items-center justify-center bg-[#99C7F4] text-neutral-800">
         <ul className="flex w-full font-thin items-center justify-evenly">
-          <li>Home</li>
-          <li>Disconnect</li>
-          <li>0x4323432534</li>
           <li>
-            <Button
-              onClick={connectWallet}
-            >
-              {currentWallet ? "Logout" : "Connect Wallet"}
-            </Button>
+            <Link href="/">Home</Link>
           </li>
-          <li>
-            {currentWallet && 'Tem wallet aqui'}
+          {currentWallet && (
+            <>
+              <li className="font-bold">{`${currentWallet.substring(
+                0,
+                9
+              )}...`}</li>
+            </>
+          )}
+          <li
+            className="cursor-pointer"
+            onClick={!currentWallet ? connectWallet : disconnectWallet}
+          >
+            {currentWallet ? "Logout" : "Connect Wallet"}
           </li>
         </ul>
       </div>

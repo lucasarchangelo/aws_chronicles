@@ -27,13 +27,12 @@ export const useEthers = (): useEthersReturn => {
       });
       setProvider(providerInstance);
       useEthersStore.setState({ provider: providerInstance });
-      
+
       const gameAddress = Game.networks["80001"].address;
       const nftWeapon = NFTWeapon.networks["80001"].address;
 
-      useEthersStore.setState({nftContract: nftWeapon});
-      useEthersStore.setState({gameContrat: gameAddress});
-      
+      useEthersStore.setState({ nftContract: nftWeapon });
+      useEthersStore.setState({ gameContrat: gameAddress });
     } catch (error) {
       console.log(error);
     }
@@ -51,8 +50,8 @@ export const useEthers = (): useEthersReturn => {
     const fetchData = async () => {
       const signer = await provider?.getSigner();
       setSigner(signer);
-    }
-    const result = fetchData()
+    };
+    fetchData();
   }, [provider, currentWallet]);
 
   return {

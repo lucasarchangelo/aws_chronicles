@@ -3,8 +3,12 @@ import { Layout } from "../Layout";
 import { Button } from "@/components/Button";
 import { Weapons } from "./components/Weapons";
 import { Blur } from "@/components/Blur";
+import { useContract } from "@/contexts/ContractContext";
 
 export const Home = () => {
+  //importar funcoes do contrato
+  const {} = useContract();
+
   return (
     <Layout
       actions={
