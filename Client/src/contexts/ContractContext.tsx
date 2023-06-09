@@ -39,12 +39,12 @@ const ContractProvider = ({ children }: { children: any }) => {
     }
   };
 
-  const upgradeWeapon = async () => {
+  const upgradeWeapon = async (tokenId: number, luckValue: number) => {
     if (!gameContractInstance || !signer || !provider) return;
     try {
-      const price = await gameContractInstance.getUpgradePrice();
-      const tx = await gameContractInstance.upgradeWeapon({
-        value: price,
+      const upgradePrice = await gameContractInstance.getUpgradePrice();
+      const tx = await gameContractInstance.upgradeWeapon(tokenId, luckValue, {
+        value: upgradePrice,
       });
       console.log(tx);
       const receipt = await tx.wait();
