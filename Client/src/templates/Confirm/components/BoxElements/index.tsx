@@ -19,7 +19,7 @@ export const BoxElements = () => {
             <Image
               className="w-4/5"
               alt="power"
-              src="/static-power.png"
+              src="/static-power-1.png"
               width={80}
               height={80}
             />
@@ -28,7 +28,7 @@ export const BoxElements = () => {
             <Image
               className="w-4/5"
               alt="power"
-              src="/static-power.png"
+              src="/static-power-2.png"
               width={80}
               height={80}
             />
@@ -37,7 +37,7 @@ export const BoxElements = () => {
             <Image
               className="w-4/5"
               alt="power"
-              src="/static-power.png"
+              src="/static-power-3.png"
               width={80}
               height={80}
             />
@@ -46,7 +46,7 @@ export const BoxElements = () => {
             <Image
               className="w-4/5"
               alt="power"
-              src="/static-power.png"
+              src="/static-power-4.png"
               width={80}
               height={80}
             />
