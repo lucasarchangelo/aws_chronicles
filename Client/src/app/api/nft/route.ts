@@ -13,8 +13,7 @@ export async function GET(request: NextRequest) {
         { status: 400 }
       );
     }
-    const apiKey = process.env.MORALIS_API_KEY as string;
-    const res = await MoralisServices.getNftCollection(wallet, apiKey);
+    const res = await MoralisServices.getNftCollection(wallet);
     return NextResponse.json({
       message: "NFTs fetched successfully",
       NFTS: res.result.flatMap((nft: any) => ({

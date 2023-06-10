@@ -3,7 +3,7 @@ import { useEthersStore } from "@/store/ethersStore";
 
 export const Weapons = ({ weapons }: any) => {
   const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || weapons[0]?.tokenId || 0;
+    useEthersStore((state) => state.selectedWeapon) || weapons[0]?.tokenId;
   const notSelectedWeapon = weapons.filter(
     (item: any) => item?.tokenId !== selectedWeapon
   );

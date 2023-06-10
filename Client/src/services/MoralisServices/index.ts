@@ -4,11 +4,11 @@ import NFTWeapon from "../../../contracts/NFTWeapon.json";
 let moralisInitialized = false;
 
 export const MoralisServices = {
-  getNftCollection: async (userWallet: string, apiKey: string) => {
+  getNftCollection: async (userWallet: string) => {
     try {
       if (!moralisInitialized) {
         await Moralis.start({
-          apiKey,
+          apiKey: process.env.MORALIS_API_KEY,
         });
         moralisInitialized = true;
       }

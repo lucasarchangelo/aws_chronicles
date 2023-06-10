@@ -12,11 +12,9 @@ import { useEffect } from "react";
 
 export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
-  const { data, isLoading } = useNftCollection(currentWallet);
+  const { data, isLoading, isError } = useNftCollection(currentWallet);
   const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) ||
-    data?.NFTS[0]?.tokenId ||
-    0;
+    useEthersStore((state) => state.selectedWeapon) || data?.NFTS[0]?.tokenId;
   const selectedWeaponObj = data?.NFTS.filter(
     (item: any) => item.tokenId === selectedWeapon
   )[0];
@@ -33,10 +31,12 @@ export const Home = () => {
       </div>
     );
 
+  if (isError) return <div>failed to load</div>;
+
   return (
     <Layout
       actions={<ActionButtons />}
-      footer={<Weapons weapons={data.NFTS} />}
+      footer={<Weapons weapons={data?.NFTS} />}
       leftSlot={
         <div className="flex w-full justify-center items-center">
           <Blur />
