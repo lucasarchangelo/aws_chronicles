@@ -7,19 +7,19 @@ import { motion } from "framer-motion";
 
 const fakeData = [
   {
-    id: 16,
+    id: 0,
     image: "/static-power-1.png",
   },
   {
-    id: 17,
+    id: 1,
     image: "/static-power-2.png",
   },
   {
-    id: 18,
+    id: 2,
     image: "/static-power-3.png",
   },
   {
-    id: 19,
+    id: 3,
     image: "/static-power-4.png",
   },
 ];

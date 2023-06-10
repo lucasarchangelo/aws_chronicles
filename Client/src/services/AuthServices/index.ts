@@ -5,7 +5,6 @@ import { changeNetwork } from "@/functions/changeNetwork";
 export const AuthServices = {
   connect: async (provider: ethers.BrowserProvider) => {
     console.log("Parou antes do provider.getNetwork")
-    // debugger;
     const provider1 = new ethers.BrowserProvider(window.ethereum)
 
     const network = await provider1.getNetwork();
