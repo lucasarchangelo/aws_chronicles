@@ -6,19 +6,19 @@ import Image from "next/image";
 
 const fakeData = [
   {
-    id: 0,
+    id: 16,
     image: "/static-power-1.png",
   },
   {
-    id: 1,
+    id: 17,
     image: "/static-power-2.png",
   },
   {
-    id: 2,
+    id: 18,
     image: "/static-power-3.png",
   },
   {
-    id: 3,
+    id: 19,
     image: "/static-power-4.png",
   },
 ];
