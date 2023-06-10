@@ -14,7 +14,9 @@ export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
   const { data, isLoading } = useNftCollection(currentWallet);
   const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || data?.NFTS[0].tokenId;
+    useEthersStore((state) => state.selectedWeapon) ||
+    data?.NFTS[0]?.tokenId ||
+    0;
   const selectedWeaponObj = data?.NFTS.filter(
     (item: any) => item.tokenId === selectedWeapon
   )[0];
@@ -49,12 +51,12 @@ export const Home = () => {
               duration: 1,
             }}
             className="flex w-full justify-center items-center relative"
-            key={selectedWeaponObj.id}
+            key={selectedWeaponObj?.id}
           >
             <Image
               alt="element"
               className="z-10"
-              src={selectedWeaponObj.metadata.image}
+              src={selectedWeaponObj?.metadata?.image}
               width={340}
               height={340}
             />

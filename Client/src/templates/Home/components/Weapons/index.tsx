@@ -3,9 +3,9 @@ import { useEthersStore } from "@/store/ethersStore";
 
 export const Weapons = ({ weapons }: any) => {
   const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || weapons[0].tokenId;
+    useEthersStore((state) => state.selectedWeapon) || weapons[0]?.tokenId || 0;
   const notSelectedWeapon = weapons.filter(
-    (item: any) => item.tokenId !== selectedWeapon
+    (item: any) => item?.tokenId !== selectedWeapon
   );
 
   return (
@@ -13,7 +13,7 @@ export const Weapons = ({ weapons }: any) => {
       {notSelectedWeapon?.map((item: any) => (
         <div
           onClick={() =>
-            useEthersStore.setState({ selectedWeapon: item.tokenId })
+            useEthersStore.setState({ selectedWeapon: item?.tokenId })
           }
           key={item.id}
           className="flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
@@ -21,7 +21,7 @@ export const Weapons = ({ weapons }: any) => {
           <img
             alt="element"
             className="z-10"
-            src={item.metadata.image}
+            src={item?.metadata?.image}
             width={100}
             height={100}
           />
