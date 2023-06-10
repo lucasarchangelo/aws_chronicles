@@ -1,7 +1,10 @@
-import { Header } from "@/components/Header";
+"use client";
+
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import { Gugi } from "next/font/google";
 import ContractProvider from "@/contexts/ContractContext";
+import { ToastContainer } from "react-toastify";
 
 const gugi = Gugi({
   weight: "400",
@@ -21,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ContractProvider>
+        <ToastContainer />
         <body style={gugi.style}>{children}</body>
       </ContractProvider>
     </html>

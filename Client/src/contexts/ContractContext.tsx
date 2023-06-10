@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useEthers } from "@/hooks/useEthers";
 import Game from "../../contracts/Game.json";
+import { toast, ToastContainer } from "react-toastify";
 
 const ContractContext = createContext({} as any);
 
@@ -31,6 +32,7 @@ const ContractProvider = ({ children }: { children: any }) => {
         value: price,
       });
       console.log(tx);
+      toast.success("Transaction sent");
       const receipt = await tx.wait();
       console.log(receipt);
       return receipt;
@@ -52,6 +54,7 @@ const ContractProvider = ({ children }: { children: any }) => {
         }
       );
       console.log({ tx });
+      toast.success("Transaction sent");
       const receipt = await tx.wait();
       console.log({ receipt });
       return receipt;

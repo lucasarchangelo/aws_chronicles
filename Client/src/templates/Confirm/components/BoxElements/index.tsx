@@ -36,14 +36,14 @@ export const BoxElements = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, right: "-30%" }}
+      animate={{ opacity: 1, right: "0%" }}
       exit={{ opacity: 0, scale: 0.1 }}
       transition={{
         type: "spring",
         stiffness: 200,
         damping: 20,
-        duration: 0.5,
+        duration: 1,
       }}
       className="flex w-full justify-center items-center relative"
     >
