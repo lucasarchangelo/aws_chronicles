@@ -12,7 +12,9 @@ export const Weapons = ({ weapons }: any) => {
     <div className="relative flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">
       {notSelectedWeapon?.map((item: any) => (
         <div
-          onClick={() => useEthersStore.setState({ selectedWeapon: item.id })}
+          onClick={() =>
+            useEthersStore.setState({ selectedWeapon: item.tokenId })
+          }
           key={item.id}
           className="flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
         >
