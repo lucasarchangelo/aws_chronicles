@@ -22,9 +22,8 @@ export const MoralisServices = {
       });
 
       return response;
-    } catch (e) {
-      console.error(e);
-      throw new Error("Error fetching NFTs");
+    } catch (e: any) {
+      throw new Error(e);
     }
   },
 };

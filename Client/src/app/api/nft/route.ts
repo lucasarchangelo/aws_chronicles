@@ -1,6 +1,8 @@
 import { MoralisServices } from "@/services/MoralisServices";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -23,7 +25,7 @@ export async function GET(request: NextRequest) {
   } catch (e) {
     console.error(e);
     return NextResponse.json({
-      error: "Error fetching NFTs",
+      error: e,
     });
   }
 }

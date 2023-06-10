@@ -14,15 +14,17 @@ export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
   const { data, isLoading, isError } = useNftCollection(currentWallet);
   const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || data?.NFTS[0]?.tokenId;
+    useEthersStore((state) => state.selectedWeapon) || data
+      ? data?.NFTS[0]?.tokenId
+      : null;
   const selectedWeaponObj = data?.NFTS.filter(
     (item: any) => item.tokenId === selectedWeapon
   )[0];
 
   useEffect(() => {
-    if (!data?.NFTS.length || !useEthersStore.getState().selectedWeapon) return;
-    useEthersStore.setState({ selectedWeapon: data.NFTS[0].tokenId });
-  }, [data]);
+    if (data && !useEthersStore.getState().selectedWeapon && !isError) return;
+    useEthersStore.setState({ selectedWeapon: data?.NFTS[0].tokenId });
+  }, [data, isError]);
 
   if (isLoading)
     return (
