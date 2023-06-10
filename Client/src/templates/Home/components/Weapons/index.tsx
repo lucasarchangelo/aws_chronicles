@@ -8,15 +8,15 @@ export const weapons = [
     image: "/static-element.png",
   },
   {
-    id: 16,
+    id: 2,
     image: "/static-element-2.png",
   },
   {
-    id: 17,
+    id: 3,
     image: "/static-element-3.png",
   },
   {
-    id: 18,
+    id: 4,
     image: "/static-element-4.png",
   },
 ];
