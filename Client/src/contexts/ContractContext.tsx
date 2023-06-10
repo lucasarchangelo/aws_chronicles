@@ -32,11 +32,13 @@ const ContractProvider = ({ children }: { children: any }) => {
         value: price,
       });
       console.log(tx);
-      toast.success("Transaction sent");
+      toast.info("Transaction sent");
       const receipt = await tx.wait();
+      toast.success("Transaction confirmed");
       console.log(receipt);
       return receipt;
     } catch (error) {
+      toast.error("Transaction failed");
       console.log(error);
     }
   };
@@ -54,11 +56,13 @@ const ContractProvider = ({ children }: { children: any }) => {
         }
       );
       console.log({ tx });
-      toast.success("Transaction sent");
+      toast.info("Transaction sent");
       const receipt = await tx.wait();
+      toast.success("Transaction confirmed");
       console.log({ receipt });
       return receipt;
     } catch (error) {
+      toast.error("Transaction failed");
       console.log(error);
     }
   };

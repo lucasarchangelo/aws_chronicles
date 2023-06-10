@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ContractProvider>
-        <ToastContainer />
+        <ToastContainer theme="dark" />
         <body style={gugi.style}>{children}</body>
       </ContractProvider>
     </html>
