@@ -22,7 +22,7 @@ export const Home = () => {
   )[0];
 
   useEffect(() => {
-    if (!data || !useEthersStore.getState().selectedWeapon) return;
+    if (!data?.NFTS.length || !useEthersStore.getState().selectedWeapon) return;
     useEthersStore.setState({ selectedWeapon: data.NFTS[0].tokenId });
   }, [data]);
 
@@ -51,15 +51,19 @@ export const Home = () => {
               duration: 1,
             }}
             className="flex w-full justify-center items-center relative"
-            key={selectedWeaponObj?.id}
+            key={selectedWeaponObj?.tokenId}
           >
-            <Image
-              alt="element"
-              className="z-10"
-              src={selectedWeaponObj?.metadata?.image}
-              width={340}
-              height={340}
-            />
+            {selectedWeaponObj?.metadata ? (
+              <Image
+                alt="element"
+                className="z-10"
+                src={selectedWeaponObj?.metadata?.image}
+                width={340}
+                height={340}
+              />
+            ) : (
+              <h1>mint your nft to start your way to success</h1>
+            )}
           </motion.div>
         </div>
       }
