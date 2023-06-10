@@ -8,8 +8,6 @@ const gugi = Gugi({
   subsets: ["latin"],
 });
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Arcane Warriors Saga | The AWS Chronicles",
   description: "Arcane Warriors Saga, The AWS Chronicles",
