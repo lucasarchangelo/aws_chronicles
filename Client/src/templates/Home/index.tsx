@@ -7,6 +7,7 @@ import ActionButtons from "@/components/ActionButtons";
 import { useEthersStore } from "@/store/ethersStore";
 import { motion } from "framer-motion";
 import { useNftCollection } from "@/hooks/useNftCollection";
+import { HashLoader } from "react-spinners";
 
 export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
@@ -17,7 +18,12 @@ export const Home = () => {
     (item: any) => item.tokenId === selectedWeapon
   )[0];
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-[calc(100vh-80px)]">
+        <HashLoader color={"#ffffff"} size={70} />
+      </div>
+    );
 
   return (
     <Layout
