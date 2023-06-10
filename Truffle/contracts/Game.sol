@@ -77,6 +77,7 @@ contract Game is Ownable, ReentrancyGuard, VRFV2Consumer {
         uint256 chainlinkRequest = requestRandomWords(1);
         upgrades[chainlinkRequest].tokenId = _tokenId;
         upgrades[chainlinkRequest].luckValue = _luckValue;
+        upgrades[chainlinkRequest].sender = msg.sender;
         emit Upgrade(msg.sender, _luckValue, _tokenId, chainlinkRequest);
     }
 
