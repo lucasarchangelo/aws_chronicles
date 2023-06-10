@@ -30,8 +30,8 @@ export default function Home() {
           <header className="flex items-start justify-between mb-16">
             <div className="flex items-center justify-center gap-28 mt-16">
               <Link href="/about">About us</Link>
-              <Link href="">Why AWS?</Link>
-              <Link href="">Contact us</Link>
+              <Link href="/why-aws">Why AWS?</Link>
+              <Link href="contact-us">Contact us</Link>
             </div>
             <div className="flex gap-6 mt-4 mr-4">
               <input
@@ -56,7 +56,7 @@ export default function Home() {
                 battles, and untold secrets, as you embark on a quest to forge
                 the ultimate armament.
               </h3>
-              <div className="w-56">
+              <div className="-ml-5 w-56">
                 <Link href="/dapp">
                   <Button>Go to dapp</Button>
                 </Link>
