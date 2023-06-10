@@ -1,35 +1,16 @@
 import { useContract } from "@/contexts/ContractContext";
 import { useEthersStore } from "@/store/ethersStore";
-import Image from "next/image";
 
-export const weapons = [
-  {
-    id: 0,
-    image: "/static-element.png",
-  },
-  {
-    id: 2,
-    image: "/static-element-2.png",
-  },
-  {
-    id: 3,
-    image: "/static-element-3.png",
-  },
-  {
-    id: 4,
-    image: "/static-element-4.png",
-  },
-];
-
-export const Weapons = () => {
-  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
+export const Weapons = ({ weapons }: any) => {
+  const selectedWeapon =
+    useEthersStore((state) => state.selectedWeapon) || weapons[0].tokenId;
   const notSelectedWeapon = weapons.filter(
-    (item) => item.id !== selectedWeapon
+    (item: any) => item.tokenId !== selectedWeapon
   );
 
   return (
     <div className="relative flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">
-      {notSelectedWeapon?.map((item) => (
+      {notSelectedWeapon?.map((item: any) => (
         <div
           onClick={() => useEthersStore.setState({ selectedWeapon: item.id })}
           key={item.id}
@@ -38,7 +19,7 @@ export const Weapons = () => {
           <img
             alt="element"
             className="z-10"
-            src={item.image}
+            src={item.metadata.image}
             width={100}
             height={100}
           />

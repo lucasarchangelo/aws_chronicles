@@ -1,23 +1,28 @@
 "use client";
 import Image from "next/image";
 import { Layout } from "../Layout";
-import { Weapons, weapons } from "./components/Weapons";
+import { Weapons } from "./components/Weapons";
 import { Blur } from "@/components/Blur";
-import { useContract } from "@/contexts/ContractContext";
 import ActionButtons from "@/components/ActionButtons";
 import { useEthersStore } from "@/store/ethersStore";
 import { motion } from "framer-motion";
+import { useNftCollection } from "@/hooks/useNftCollection";
 
 export const Home = () => {
-  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
-  const selectedWeaponObj = weapons.filter(
-    (item) => item.id === selectedWeapon
+  const currentWallet = useEthersStore((state) => state.currentWallet);
+  const { data, isLoading } = useNftCollection(currentWallet);
+  const selectedWeapon =
+    useEthersStore((state) => state.selectedWeapon) || data?.NFTS[0].tokenId;
+  const selectedWeaponObj = data?.NFTS.filter(
+    (item: any) => item.tokenId === selectedWeapon
   )[0];
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <Layout
       actions={<ActionButtons />}
-      footer={<Weapons></Weapons>}
+      footer={<Weapons weapons={data.NFTS} />}
       leftSlot={
         <>
           <Blur />
@@ -37,7 +42,7 @@ export const Home = () => {
             <Image
               alt="element"
               className="z-10"
-              src={selectedWeaponObj.image}
+              src={selectedWeaponObj.metadata.image}
               width={340}
               height={340}
             />

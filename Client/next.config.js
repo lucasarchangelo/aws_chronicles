@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: ["chainlinkbootcamp.infura-ipfs.io"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
