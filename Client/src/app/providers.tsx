@@ -9,11 +9,11 @@ const queryClient = new QueryClient();
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ContractProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ContractProvider>
         <ToastContainer theme="dark" />
         {children}
-      </QueryClientProvider>
-    </ContractProvider>
+      </ContractProvider>
+    </QueryClientProvider>
   );
 };

@@ -5,7 +5,8 @@ import { ethers } from "ethers";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useEthers } from "@/hooks/useEthers";
 import Game from "../../contracts/Game.json";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 const ContractContext = createContext({} as any);
 
@@ -17,6 +18,7 @@ const ContractProvider = ({ children }: { children: any }) => {
   const { provider, signer } = useEthers();
   const gameContractAddress = useEthersStore((state) => state.gameContrat);
   const [gameContractInstance, setGameContractInstance] = useState<any>();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (!provider || !currentWallet || !signer) return;
@@ -31,15 +33,15 @@ const ContractProvider = ({ children }: { children: any }) => {
       const tx = await gameContractInstance.buyWeapon({
         value: price,
       });
-      console.log(tx);
       toast.info("Transaction sent");
       const receipt = await tx.wait();
       toast.success("Transaction confirmed");
-      console.log(receipt);
       return receipt;
     } catch (error) {
       toast.error("Transaction failed");
       console.log(error);
+    } finally {
+      queryClient.invalidateQueries(["nftCollection", currentWallet]);
     }
   };
 
@@ -64,6 +66,8 @@ const ContractProvider = ({ children }: { children: any }) => {
     } catch (error) {
       toast.error("Transaction failed");
       console.log(error);
+    } finally {
+      queryClient.invalidateQueries(["nftCollection", currentWallet]);
     }
   };
 

@@ -8,6 +8,7 @@ import { useEthersStore } from "@/store/ethersStore";
 import { motion } from "framer-motion";
 import { useNftCollection } from "@/hooks/useNftCollection";
 import { HashLoader } from "react-spinners";
+import { useEffect } from "react";
 
 export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
@@ -17,6 +18,11 @@ export const Home = () => {
   const selectedWeaponObj = data?.NFTS.filter(
     (item: any) => item.tokenId === selectedWeapon
   )[0];
+
+  useEffect(() => {
+    if (!data || !useEthersStore.getState().selectedWeapon) return;
+    useEthersStore.setState({ selectedWeapon: data.NFTS[0].tokenId });
+  }, [data]);
 
   if (isLoading)
     return (
@@ -30,7 +36,7 @@ export const Home = () => {
       actions={<ActionButtons />}
       footer={<Weapons weapons={data.NFTS} />}
       leftSlot={
-        <>
+        <div className="flex w-full justify-center items-center">
           <Blur />
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -53,7 +59,7 @@ export const Home = () => {
               height={340}
             />
           </motion.div>
-        </>
+        </div>
       }
     />
   );
