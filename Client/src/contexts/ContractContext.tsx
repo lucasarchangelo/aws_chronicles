@@ -38,7 +38,8 @@ const ContractProvider = ({ children }: { children: any }) => {
       toast.update(id, {
         render: "Transaction confirmed",
         type: "success",
-        autoClose: 2300,
+        isLoading: false,
+        autoClose: 2500,
       });
 
       return receipt;
@@ -63,13 +64,14 @@ const ContractProvider = ({ children }: { children: any }) => {
           value: upgradePrice,
         }
       );
-      
+
       const id = toast.loading("Transaction sent");
       const receipt = await tx.wait();
       toast.update(id, {
         render: "Transaction confirmed",
         type: "success",
-        autoClose: 3800,
+        isLoading: false,
+        autoClose: 3500,
       });
 
       return receipt;
