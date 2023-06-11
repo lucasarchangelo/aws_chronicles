@@ -41,7 +41,9 @@ const ContractProvider = ({ children }: { children: any }) => {
       toast.error("Transaction failed");
       console.log(error);
     } finally {
-      queryClient.invalidateQueries(["nftCollection", currentWallet]);
+      setTimeout(() => {
+        queryClient.invalidateQueries(["nftCollection", currentWallet]);
+      }, 2000);
     }
   };
 
@@ -67,7 +69,9 @@ const ContractProvider = ({ children }: { children: any }) => {
       toast.error("Transaction failed");
       console.log(error);
     } finally {
-      queryClient.invalidateQueries(["nftCollection", currentWallet]);
+      setTimeout(() => {
+        queryClient.invalidateQueries(["nftCollection", currentWallet]);
+      }, 4000);
     }
   };
 

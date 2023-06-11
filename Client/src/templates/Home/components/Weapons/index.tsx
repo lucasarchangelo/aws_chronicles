@@ -1,14 +1,12 @@
-import { useContract } from "@/contexts/ContractContext";
 import { useEthersStore } from "@/store/ethersStore";
 
 export const Weapons = ({ weapons }: any) => {
-  const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || weapons
-      ? weapons[0]?.tokenId
-      : null;
+  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
   const notSelectedWeapon = weapons.filter(
-    (item: any) => item?.tokenId !== selectedWeapon
+    (item: any) => item?.tokenId !== (selectedWeapon ?? weapons[0]?.tokenId)
   );
+
+  console.log({ selectedWeapon });
 
   return (
     <div className="relative flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">

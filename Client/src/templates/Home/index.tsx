@@ -13,18 +13,14 @@ import { useEffect } from "react";
 export const Home = () => {
   const currentWallet = useEthersStore((state) => state.currentWallet);
   const { data, isLoading, isError } = useNftCollection(currentWallet);
-  const selectedWeapon =
-    useEthersStore((state) => state.selectedWeapon) || data
-      ? data?.NFTS[0]?.tokenId
-      : null;
-  const selectedWeaponObj = data?.NFTS.filter(
-    (item: any) => item.tokenId === selectedWeapon
-  )[0];
+  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
 
   useEffect(() => {
-    if (data && !useEthersStore.getState().selectedWeapon && !isError) return;
-    useEthersStore.setState({ selectedWeapon: data?.NFTS[0].tokenId });
-  }, [data, isError]);
+    if (!data && !useEthersStore.getState().selectedWeapon) return;
+    if (!data?.NFTS[0]?.tokenId) return;
+    console.log(data.NFTS[0]?.tokenId, "useEffect");
+    useEthersStore.setState({ selectedWeapon: data?.NFTS[0]?.tokenId });
+  }, [data]);
 
   if (isLoading)
     return (
@@ -34,6 +30,10 @@ export const Home = () => {
     );
 
   if (isError) return <div>failed to load</div>;
+
+  const selectedWeaponObj = data?.NFTS.find(
+    (item: any) => item?.tokenId === (selectedWeapon ?? data?.NFTS[0]?.tokenId)
+  );
 
   return (
     <Layout
@@ -55,7 +55,7 @@ export const Home = () => {
             className="flex w-full justify-center items-center relative"
             key={selectedWeaponObj?.tokenId}
           >
-            {selectedWeaponObj?.metadata ? (
+            {data && selectedWeaponObj?.metadata ? (
               <Image
                 alt="element"
                 className="z-10"
