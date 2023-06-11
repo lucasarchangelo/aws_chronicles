@@ -9,7 +9,8 @@ export const useHome = () => {
   const { data, isLoading, isError } = useNftCollection(currentWallet);
 
   useEffect(() => {
-    if (!data?.NFTS[0]?.tokenId) return;
+    if(!data || !data?.NFTS) return
+    if (!data?.NFTS[0]?.tokenId!) return;
     useAwsStore.setState({ selectedWeapon: data?.NFTS[0]?.tokenId });
   }, [data]);
 
