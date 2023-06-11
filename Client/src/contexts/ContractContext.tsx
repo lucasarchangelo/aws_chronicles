@@ -71,7 +71,7 @@ const ContractProvider = ({ children }: { children: any }) => {
     } finally {
       setTimeout(() => {
         queryClient.invalidateQueries(["nftCollection", currentWallet]);
-      }, 2500);
+      }, 3000);
     }
   };
 

@@ -1,4 +1,5 @@
 import { useEthersStore } from "@/store/ethersStore";
+import { motion } from "framer-motion";
 
 export const Weapons = ({ weapons }: any) => {
   const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
@@ -9,7 +10,17 @@ export const Weapons = ({ weapons }: any) => {
   console.log({ selectedWeapon });
 
   return (
-    <div className="relative rounded-tl-3xl flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">
+    <motion.div
+      initial={{ y: "50%" }}
+      animate={{ y: "0%" }}
+      transition={{
+        type: "spring",
+        stiffness: 150,
+        damping: 20,
+        duration: 0.6,
+      }}
+      className="relative rounded-tl-3xl flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5"
+    >
       {notSelectedWeapon?.map((item: any) => (
         <div
           onClick={() =>
@@ -27,6 +38,6 @@ export const Weapons = ({ weapons }: any) => {
           />
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
