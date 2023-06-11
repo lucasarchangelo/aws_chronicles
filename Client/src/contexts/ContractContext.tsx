@@ -33,9 +33,14 @@ const ContractProvider = ({ children }: { children: any }) => {
       const tx = await gameContractInstance.buyWeapon({
         value: price,
       });
-      toast.info("Transaction sent");
+      const id = toast.loading("Transaction sent");
       const receipt = await tx.wait();
-      toast.success("Transaction confirmed");
+      toast.update(id, {
+        render: "Transaction confirmed",
+        type: "success",
+        autoClose: 2300,
+      });
+
       return receipt;
     } catch (error) {
       toast.error("Transaction failed");
@@ -43,7 +48,7 @@ const ContractProvider = ({ children }: { children: any }) => {
     } finally {
       setTimeout(() => {
         queryClient.invalidateQueries(["nftCollection", currentWallet]);
-      }, 2500);
+      }, 2000);
     }
   };
 
@@ -51,7 +56,6 @@ const ContractProvider = ({ children }: { children: any }) => {
     if (!gameContractInstance || !signer || !provider) return;
     try {
       const upgradePrice = await gameContractInstance.getUpgradePrice();
-      console.log({ upgradePrice });
       const tx = await gameContractInstance.forgeUpgradeWeapon(
         tokenId,
         luckValue,
@@ -59,11 +63,15 @@ const ContractProvider = ({ children }: { children: any }) => {
           value: upgradePrice,
         }
       );
-      console.log({ tx });
-      toast.info("Transaction sent");
+      
+      const id = toast.loading("Transaction sent");
       const receipt = await tx.wait();
-      toast.success("Transaction confirmed");
-      console.log({ receipt });
+      toast.update(id, {
+        render: "Transaction confirmed",
+        type: "success",
+        autoClose: 3800,
+      });
+
       return receipt;
     } catch (error) {
       toast.error("Transaction failed");
@@ -71,7 +79,7 @@ const ContractProvider = ({ children }: { children: any }) => {
     } finally {
       setTimeout(() => {
         queryClient.invalidateQueries(["nftCollection", currentWallet]);
-      }, 3000);
+      }, 3500);
     }
   };
 
