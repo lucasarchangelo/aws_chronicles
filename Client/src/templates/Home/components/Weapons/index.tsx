@@ -9,7 +9,7 @@ export const Weapons = ({ weapons }: any) => {
   console.log({ selectedWeapon });
 
   return (
-    <div className="relative flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">
+    <div className="relative rounded-tl-3xl flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5">
       {notSelectedWeapon?.map((item: any) => (
         <div
           onClick={() =>

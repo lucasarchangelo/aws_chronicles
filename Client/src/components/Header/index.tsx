@@ -18,7 +18,7 @@ export const Header = () => {
           <p className="text-xl">The AWS Chronicles</p>
         </Link>
       </div>
-      <div className="w-1/2 flex items-center justify-center bg-[#99C7F4] text-neutral-800">
+      <div className="w-1/2 flex items-center rounded-bl-3xl justify-center bg-[#99C7F4] text-neutral-800">
         <ul className="flex w-full font-thin items-center justify-evenly">
           <li>
             <Link href="/dapp">Home</Link>

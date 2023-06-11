@@ -43,7 +43,7 @@ const ContractProvider = ({ children }: { children: any }) => {
     } finally {
       setTimeout(() => {
         queryClient.invalidateQueries(["nftCollection", currentWallet]);
-      }, 2000);
+      }, 2500);
     }
   };
 
@@ -71,7 +71,7 @@ const ContractProvider = ({ children }: { children: any }) => {
     } finally {
       setTimeout(() => {
         queryClient.invalidateQueries(["nftCollection", currentWallet]);
-      }, 4000);
+      }, 2500);
     }
   };
 
