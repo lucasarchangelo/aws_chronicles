@@ -1,9 +1,11 @@
+"use client";
+
 import { Blur } from "@/components/Blur";
 import { Button } from "@/components/Button";
 import { useContract } from "@/contexts/ContractContext";
-import { useEthersStore } from "@/store/ethersStore";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useAwsStore } from "@/store/awsStore";
 
 const fakeData = [
   {
@@ -25,12 +27,10 @@ const fakeData = [
 ];
 
 export const BoxElements = () => {
-  const selectedWeapon = useEthersStore((state) => state.selectedWeapon);
-  const selectedPower = useEthersStore((state) => state.selectedPower);
+  const { selectedWeapon, selectedPower } = useAwsStore((state) => state);
   const { upgradeWeapon } = useContract();
 
   const handleUpgrade = async () => {
-    console.log({ selectedWeapon, selectedPower });
     await upgradeWeapon(selectedWeapon, selectedPower);
   };
 
@@ -60,9 +60,7 @@ export const BoxElements = () => {
           {fakeData?.map((item) => (
             <div
               key={item.id}
-              onClick={() =>
-                useEthersStore.setState({ selectedPower: item.id })
-              }
+              onClick={() => useAwsStore.setState({ selectedPower: item.id })}
               className={`${
                 selectedPower == item.id && "scale-110"
               } flex flex-col cursor-pointer items-center justify-center hover:scale-105 transition-all ease-in-out`}

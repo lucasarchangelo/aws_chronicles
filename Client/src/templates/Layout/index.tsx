@@ -1,13 +1,10 @@
-import { Button } from "@/components/Button";
+import ActionButtons from "@/components/ActionButtons";
 import Chain from "@/components/Chain";
-import Image from "next/image";
 
 export const Layout = ({
-  actions,
   leftSlot,
   footer,
 }: {
-  actions?: React.ReactNode;
   leftSlot?: React.ReactNode;
   footer?: React.ReactNode;
 }) => {
@@ -16,7 +13,7 @@ export const Layout = ({
       <Chain />
       <div className="flex h-4/5 mx-auto container justify-between py-4 px-10">
         <div className="flex items-center justify-center flex-col gap-4">
-          {actions}
+          <ActionButtons />
         </div>
         <div className="flex w-2/3">{leftSlot}</div>
       </div>
