@@ -75,7 +75,7 @@ export const BoxElements = () => {
             </div>
           ))}
         </div>
-        <Button onClick={handleUpgrade}>Confirm Transition</Button>
+        <Button onClick={handleUpgrade}>Confirm Upgrade</Button>
       </div>
     </motion.div>
   );

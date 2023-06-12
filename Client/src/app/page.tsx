@@ -31,7 +31,7 @@ export default function Home() {
             <div className="flex items-center justify-center gap-28 mt-16">
               <Link href="/about">About us</Link>
               <Link href="/why-aws">Why AWS?</Link>
-              <Link href="contact-us">Contact us</Link>
+              <Link href="/contact">Contact us</Link>
             </div>
             <div className="flex gap-6 mt-4 mr-4">
               <input
