@@ -1,5 +1,12 @@
-import { motion } from "framer-motion";
 import { WeaponItem } from "./components/WeaponItem";
+
+// imports for Swiper
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
+
 
 export const Weapons = ({ weapons, selectedWeapon }: any) => {
   const notSelectedWeapon = weapons.filter(
@@ -7,20 +14,21 @@ export const Weapons = ({ weapons, selectedWeapon }: any) => {
   );
 
   return (
-    <motion.div
-      initial={{ y: "50%" }}
-      animate={{ y: "0%" }}
-      transition={{
-        type: "spring",
-        stiffness: 150,
-        damping: 20,
-        duration: 0.6,
+    <Swiper
+      slidesPerView={5}
+      spaceBetween={50}
+      centeredSlides={true}
+      pagination={{
+        type: "fraction",
       }}
-      className="relative rounded-tl-3xl flex items-center justify-evenly bg-[#99C7F4] h-full w-2/5"
+      modules={[Pagination]}
+      className="relative rounded-t-3xl flex items-center justify-evenly bg-blue-200 text-black w-4/5"
     >
       {notSelectedWeapon?.map((item: any) => (
-        <WeaponItem key={item.tokenId} item={item} />
+        <SwiperSlide className="my-2" key={item.tokenId}>
+          <WeaponItem item={item} />
+        </SwiperSlide>
       ))}
-    </motion.div>
+  </Swiper>
   );
 };
